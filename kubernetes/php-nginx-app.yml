@@ -7,7 +7,7 @@ metadata:
 spec:
   ports:
   - port: 9000
-    prototcol: TCP
+    protocol: TCP
   selector:
     app: php-fpm
 ---
@@ -22,7 +22,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 80
-    prototcol: TCP
+    protocol: TCP
   selector:
     app: php-nginx
 ---
@@ -40,8 +40,8 @@ spec:
       containers:
       - name: php-fpm
         image: 'b00gizm/php-nginx:latest'
-        imagePullPolicy: Always
-        command: ['php5-fpm', '--nodaemonize']
+        imagePullPolicy: IfNotPresent
+        command: ['/usr/sbin/php-fpm7.0', '--nodaemonize']
         ports:
         - containerPort: 9000
 ---
@@ -59,7 +59,7 @@ spec:
       containers:
       - name: php-nginx
         image: 'b00gizm/php-nginx:latest'
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         command:
         - nginx
         ports:

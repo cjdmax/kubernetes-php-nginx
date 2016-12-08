@@ -8,7 +8,7 @@ docker run \
     -p 9000:9000 \
     -v ${DIR}/../app:/app \
     b00gizm/php-nginx:latest \
-    php5-fpm --nodaemonize
+    php-fpm7.0 --nodaemonize
 
 docker run \
     -d \
